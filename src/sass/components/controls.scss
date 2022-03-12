@@ -12,19 +12,31 @@
   align-items: center;
   display: flex;
   justify-content: flex-end;
+  padding-top: 10px !important;
   text-align: center;
 
-  .green_mods {
+  .green_title {
+    left: 20px;
     position: absolute;
+    text-shadow: 0 0 20px #000;
 
-    top: -100px;
+    top: -70px;
 
-    .green_title {
+    * {
       font-size: 2em;
     }
+  }
 
-    .green_artist {
+  .green_channel {
+    left: 20px;
+    position: absolute;
+    text-shadow: 0 0 14px #000;
+
+    top: -20px;
+
+    * {
       font-size: 0.8em;
+      top: 50px;
     }
   }
 

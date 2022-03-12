@@ -1599,6 +1599,26 @@ const controls = {
       if (control === 'fullscreen') {
         container.appendChild(createButton.call(this, 'fullscreen', defaultAttributes));
       }
+
+      let green = createElement(
+        'div',
+        extend({}, defaultAttributes, {
+          class: `green_title`.trim(),
+        }),
+      );
+
+      green.innerHTML = '<label>' + this.config.title + '</label>';
+      container.appendChild(green);
+
+      green = createElement(
+        'div',
+        extend({}, defaultAttributes, {
+          class: `green_channel`.trim(),
+        }),
+      );
+
+      green.innerHTML = '<label>' + this.config.channel + '</label>';
+      container.appendChild(green);
     });
 
     // Set available quality levels
@@ -1763,9 +1783,9 @@ const controls = {
       }
       // eslint-disable-next-line no-empty
     } catch (e) {}
-  }, 
-    
-  // Add markers 
+  },
+
+  // Add markers
   setMarkers() {
     if (this.duration > 0 && !this.elements.markers) {
       const { points } = this.config.markers;
