@@ -3,7 +3,6 @@
 // This code is purely for the https://plyr.io website
 // Please see README.md in the root or github.com/sampotts/plyr
 // ==========================================================================
-/*
 import './tab-focus';
 import 'custom-event-polyfill';
 import 'url-polyfill';
@@ -13,7 +12,6 @@ import sources from './sources';
 import toggleClass from './toggle-class';
 
 (() => {
-/*
   document.addEventListener('DOMContentLoaded', () => {
     const selector = '#player';
 
@@ -30,20 +28,18 @@ import toggleClass from './toggle-class';
       },
       mediaMetadata: {
         title: 'View From A Blue Moon',
-        album: 'Sports',
         artist: 'Brainfarm',
-        artwork: [
-          {
-            src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg',
-            type: 'image/jpeg',
-          },
-        ],
       },
     });
-*
+  });
+})();
+/*
     // Expose for tinkering in the console
     window.player = player;
 
+  })
+});
+/*
     // Setup type toggle
     const buttons = document.querySelectorAll('[data-source]');
     const types = Object.keys(sources);
