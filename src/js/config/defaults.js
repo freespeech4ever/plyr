@@ -7,7 +7,7 @@ const defaults = {
   // Custom media title
   title: '',
   // Logging to console
-  debug: true,
+  debug: false,
 
   // Auto play (if supported)
   autoplay: true,
@@ -76,7 +76,7 @@ const defaults = {
   // Speed default and options to display
   speed: {
     selected: 1,
-    // The options to display in the UI, if available for the source media 
+    // The options to display in the UI, if available for the source media
     options: [0.5, 0.75, 1, 1.25, 1.5],
   },
 
@@ -250,7 +250,7 @@ const defaults = {
     // Quality
     'qualitychange',
 
-    /* Ads 
+    /* Ads
     'adsloaded',
     'adscontentpause',
     'adscontentresume',
@@ -316,7 +316,7 @@ const defaults = {
     embedContainer: 'plyr__video-embed__container',
     poster: 'plyr__poster',
     posterEnabled: 'plyr__poster-enabled',
-//    ads: 'plyr__ads',
+    //    ads: 'plyr__ads',
     control: 'plyr__control',
     controlPressed: 'plyr__control--pressed',
     playing: 'plyr--playing',
@@ -403,7 +403,7 @@ const defaults = {
     album: '',
     artwork: [],
   },
-  
+
   // Markers
   markers: {
     enabled: false,
