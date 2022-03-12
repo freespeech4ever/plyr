@@ -1,19 +1,16 @@
 // ==========================================================================
-// Plyr default config
+// Green default config
 // ==========================================================================
 
 const defaults = {
-  // Disable
   enabled: true,
-
   // Custom media title
   title: '',
-
   // Logging to console
-  debug: false,
+  debug: true,
 
   // Auto play (if supported)
-  autoplay: false,
+  autoplay: true,
 
   // Only allow one media playing at once (vimeo only)
   autopause: true,
@@ -23,10 +20,10 @@ const defaults = {
   playsinline: true,
 
   // Default time to skip when rewind/fast forward
-  seekTime: 10,
+  seekTime: 5,
 
   // Default volume
-  volume: 1,
+  volume: 2,
   muted: false,
 
   // Pass a custom duration
@@ -37,14 +34,14 @@ const defaults = {
   displayDuration: true,
 
   // Invert the current time to be a countdown
-  invertTime: true,
+  invertTime: false,
 
   // Clicking the currentTime inverts it's value to show time left rather than elapsed
   toggleInvert: true,
 
   // Force an aspect ratio
   // The format must be `'w:h'` (e.g. `'16:9'`)
-  ratio: null,
+  ratio: '16:9',
 
   // Click video container to play/pause
   clickToPlay: true,
@@ -56,21 +53,18 @@ const defaults = {
   resetOnEnd: false,
 
   // Disable the standard context menu
-  disableContextMenu: true,
+  disableContextMenu: false,
 
   // Sprite (for icons)
   loadSprite: true,
   iconPrefix: 'plyr',
-  iconUrl: 'https://cdn.plyr.io/3.6.12/plyr.svg',
-
-  // Blank video (used to prevent errors on source change)
-  blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+  iconUrl: 'https://tv.gab.com/img/logo/gab-tv.icon.std.svg',
 
   // Quality default
   quality: {
-    default: 576,
+    default: 1080,
     // The options to display in the UI, if available for the source media
-    options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240],
+    options: [1080, 720, 540, 360, 240],
     forced: false,
     onChange: null,
   },
@@ -86,13 +80,13 @@ const defaults = {
   speed: {
     selected: 1,
     // The options to display in the UI, if available for the source media (e.g. Vimeo and YouTube only support 0.5x-4x)
-    options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 4],
+    options: [0.5, 0.75, 1, 1.25, 1.5],
   },
 
   // Keyboard shortcut settings
   keyboard: {
     focused: true,
-    global: false,
+    global: true,
   },
 
   // Display tooltips
@@ -135,14 +129,14 @@ const defaults = {
     // 'fast-forward',
     'progress',
     'current-time',
-    // 'duration',
+    'duration',
     'mute',
     'volume',
-    'captions',
+    //'captions',
     'settings',
     'pip',
     'airplay',
-    // 'download',
+    'download',
     'fullscreen',
   ],
   settings: ['captions', 'quality', 'speed'],
@@ -198,16 +192,16 @@ const defaults = {
   urls: {
     download: null,
     vimeo: {
-      sdk: 'https://player.vimeo.com/api/player.js',
-      iframe: 'https://player.vimeo.com/video/{0}?{1}',
-      api: 'https://vimeo.com/api/oembed.json?url={0}',
+      sdk: 'https://undefined/',
+      iframe: 'https://undefined/',
+      api: 'https://undefined/',
     },
     youtube: {
-      sdk: 'https://www.youtube.com/iframe_api',
-      api: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v={0}',
+      sdk: 'https://undefined/',
+      api: 'https://undefined/',
     },
     googleIMA: {
-      sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
+      sdk: 'https://undefined/',
     },
   },
 
@@ -274,7 +268,7 @@ const defaults = {
     // Quality
     'qualitychange',
 
-    // Ads
+    /* Ads 
     'adsloaded',
     'adscontentpause',
     'adscontentresume',
@@ -283,7 +277,7 @@ const defaults = {
     'adscomplete',
     'adsallcomplete',
     'adsimpression',
-    'adsclick',
+    'adsclick', */
   ],
 
   // Selectors
@@ -340,7 +334,7 @@ const defaults = {
     embedContainer: 'plyr__video-embed__container',
     poster: 'plyr__poster',
     posterEnabled: 'plyr__poster-enabled',
-    ads: 'plyr__ads',
+//    ads: 'plyr__ads',
     control: 'plyr__control',
     controlPressed: 'plyr__control--pressed',
     playing: 'plyr--playing',
@@ -407,12 +401,12 @@ const defaults = {
   },
 
   // Advertisements plugin
-  // Register for an account here: http://vi.ai/publisher-video-monetization/?aid=plyrio
+  /* Register for an account here: http://vi.ai/publisher-video-monetization/?aid=plyrio
   ads: {
     enabled: false,
     publisherId: '',
     tagUrl: '',
-  },
+  },*/
 
   // Preview Thumbnails plugin
   previewThumbnails: {

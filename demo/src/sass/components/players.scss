@@ -27,12 +27,3 @@
   top: 0;
   z-index: 3;
 }
-
-// Style full supported player
-.plyr__cite {
-  color: $color-gray-500;
-
-  .icon {
-    margin-right: math.div($spacing-base, 6);
-  }
-}

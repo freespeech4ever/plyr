@@ -64,11 +64,6 @@ custom-event-polyfill@^1.0.7:
   resolved "https://registry.yarnpkg.com/custom-event-polyfill/-/custom-event-polyfill-1.0.7.tgz#9bc993ddda937c1a30ccd335614c6c58c4f87aee"
   integrity sha512-TDDkd5DkaZxZFM8p+1I3yAlvM3rSr1wbrOliG4yJiwinMZN8z/iGL7BTlDkrJcYTmgUSb4ywVCc3ZaUtOtC76w==
 
-shr-buttons@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/shr-buttons/-/shr-buttons-2.0.3.tgz#2ffd021fc3d789e1510ce2736b938bd09ea1da5a"
-  integrity sha512-sPAgHiw4uaIt9TnxTfyZEedDChcldSVtnBHE44cpe/mSC7rqm4IEKZRLYqnVlTcGM+FSDNBPUNpSf50Q2ntd+w==
-
 tslib@^1.9.3:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"

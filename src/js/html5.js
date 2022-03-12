@@ -129,11 +129,6 @@ const html5 = {
     // Remove child sources
     removeElement(html5.getSources.call(this));
 
-    // Set blank video src attribute
-    // This is to prevent a MEDIA_ERR_SRC_NOT_SUPPORTED error
-    // Info: http://stackoverflow.com/questions/32231579/how-to-properly-dispose-of-an-html5-video-and-close-socket-or-connection
-    this.media.setAttribute('src', this.config.blankVideo);
-
     // Load the new empty source
     // This will cancel existing requests
     // See https://github.com/sampotts/plyr/issues/174

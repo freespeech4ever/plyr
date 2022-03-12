@@ -372,11 +372,6 @@ declare namespace Plyr {
     iconPrefix?: string;
 
     /**
-     * Specify a URL or path to a blank video file used to properly cancel network requests.
-     */
-    blankVideo?: string;
-
-    /**
      * Autoplay the media on load. This is generally advised against on UX grounds. It is also disabled by default in some browsers.
      * If the autoplay attribute is present on a <video> or <audio> element, this will be automatically set to true.
      */
