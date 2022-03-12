@@ -30,8 +30,8 @@ const captions = {
       return;
     }
 
-    // Only Vimeo and HTML5 video supported at this point
-    if (!this.isVideo || this.isYouTube || (this.isHTML5 && !support.textTracks)) {
+    // Only HTML5 video supported at this point
+    if (!this.isVideo || (this.isHTML5 && !support.textTracks)) {
       // Clear menu and hide
       if (
         is.array(this.config.controls) &&
@@ -267,11 +267,6 @@ const captions = {
         this.storage.set({ language });
       }
 
-      // Handle Vimeo captions
-      if (this.isVimeo) {
-        this.embed.enableTextTrack(language);
-      }
-
       // Trigger event
       triggerEvent.call(this, this.media, 'languagechange');
     }
@@ -360,7 +355,7 @@ const captions = {
   },
 
   // Update captions using current track's active cues
-  // Also optional array argument in case there isn't any track (ex: vimeo)
+  // Also optional array argument in case there isn't any track
   updateCues(input) {
     // Requires UI
     if (!this.supported.ui) {

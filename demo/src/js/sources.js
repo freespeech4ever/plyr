@@ -58,24 +58,6 @@ const sources = {
       },
     ],
   },
-  youtube: {
-    type: 'video',
-    sources: [
-      {
-        src: 'https://youtube.com/watch?v=bTqVqk7FSmY',
-        provider: 'youtube',
-      },
-    ],
-  },
-  vimeo: {
-    type: 'video',
-    sources: [
-      {
-        src: 'https://vimeo.com/40648169',
-        provider: 'vimeo',
-      },
-    ],
-  },
 };
 
 export default sources;

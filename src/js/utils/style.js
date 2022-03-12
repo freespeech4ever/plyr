@@ -105,19 +105,7 @@ export function setAspectRatio(input) {
     wrapper.style.paddingBottom = `${padding}%`;
   }
 
-  // For Vimeo we have an extra <div> to hide the standard controls and UI
-  if (this.isVimeo && !this.config.vimeo.premium && this.supported.ui) {
-    const height = (100 / this.media.offsetWidth) * parseInt(window.getComputedStyle(this.media).paddingBottom, 10);
-    const offset = (height - padding) / (height / 50);
-
-    if (this.fullscreen.active) {
-      wrapper.style.paddingBottom = null;
-    } else {
-      this.media.style.transform = `translateY(-${offset}%)`;
-    }
-  } else if (this.isHTML5) {
-    wrapper.classList.add(this.config.classNames.videoFixedRatio);
-  }
+  wrapper.classList.add(this.config.classNames.videoFixedRatio);
 
   return { padding, ratio };
 }

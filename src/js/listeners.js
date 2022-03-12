@@ -304,48 +304,6 @@ class Listeners {
       },
     );
 
-    // Set a gutter for Vimeo
-    const setGutter = () => {
-      if (!player.isVimeo || player.config.vimeo.premium) {
-        return;
-      }
-
-      const target = elements.wrapper;
-      const { active } = player.fullscreen;
-      const [videoWidth, videoHeight] = getAspectRatio.call(player);
-      const useNativeAspectRatio = supportsCSS(`aspect-ratio: ${videoWidth} / ${videoHeight}`);
-
-      // If not active, remove styles
-      if (!active) {
-        if (useNativeAspectRatio) {
-          target.style.width = null;
-          target.style.height = null;
-        } else {
-          target.style.maxWidth = null;
-          target.style.margin = null;
-        }
-        return;
-      }
-
-      // Determine which dimension will overflow and constrain view
-      const [viewportWidth, viewportHeight] = getViewportSize();
-      const overflow = viewportWidth / viewportHeight > videoWidth / videoHeight;
-
-      if (useNativeAspectRatio) {
-        target.style.width = overflow ? 'auto' : '100%';
-        target.style.height = overflow ? '100%' : 'auto';
-      } else {
-        target.style.maxWidth = overflow ? `${(viewportHeight / videoHeight) * videoWidth}px` : null;
-        target.style.margin = overflow ? '0 auto' : null;
-      }
-    };
-
-    // Handle resizing
-    const resized = () => {
-      clearTimeout(timers.resized);
-      timers.resized = setTimeout(setGutter, 50);
-    };
-
     on.call(player, elements.container, 'enterfullscreen exitfullscreen', (event) => {
       const { target } = player.fullscreen;
 
@@ -359,12 +317,6 @@ class Listeners {
         return;
       }
 
-      // Set Vimeo gutter
-      setGutter();
-
-      // Watch for resizes
-      const method = event.type === 'enterfullscreen' ? on : off;
-      method.call(player, window, 'resize', resized);
     });
   };
 

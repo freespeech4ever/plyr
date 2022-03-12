@@ -12,10 +12,7 @@ const defaults = {
   // Auto play (if supported)
   autoplay: true,
 
-  // Only allow one media playing at once (vimeo only)
-  autopause: true,
-
-  // Allow inline playback on iOS (this effects YouTube/Vimeo - HTML5 requires the attribute present)
+  // Allow inline playback on iOS (HTML5 requires the attribute present)
   // TODO: Remove iosNative fullscreen option in favour of this (logic needs work)
   playsinline: true,
 
@@ -79,7 +76,7 @@ const defaults = {
   // Speed default and options to display
   speed: {
     selected: 1,
-    // The options to display in the UI, if available for the source media (e.g. Vimeo and YouTube only support 0.5x-4x)
+    // The options to display in the UI, if available for the source media 
     options: [0.5, 0.75, 1, 1.25, 1.5],
   },
 
@@ -91,7 +88,7 @@ const defaults = {
 
   // Display tooltips
   tooltips: {
-    controls: false,
+    controls: true,
     seek: true,
   },
 
@@ -191,18 +188,6 @@ const defaults = {
   // URLs
   urls: {
     download: null,
-    vimeo: {
-      sdk: 'https://undefined/',
-      iframe: 'https://undefined/',
-      api: 'https://undefined/',
-    },
-    youtube: {
-      sdk: 'https://undefined/',
-      api: 'https://undefined/',
-    },
-    googleIMA: {
-      sdk: 'https://undefined/',
-    },
   },
 
   // Custom control listeners
@@ -261,9 +246,6 @@ const defaults = {
     'controlshidden',
     'controlsshown',
     'ready',
-
-    // YouTube
-    'statechange',
 
     // Quality
     'qualitychange',
@@ -412,32 +394,6 @@ const defaults = {
   previewThumbnails: {
     enabled: false,
     src: '',
-  },
-
-  // Vimeo plugin
-  vimeo: {
-    byline: false,
-    portrait: false,
-    title: false,
-    speed: true,
-    transparent: false,
-    // Custom settings from Plyr
-    customControls: true,
-    referrerPolicy: null, // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/referrerPolicy
-    // Whether the owner of the video has a Pro or Business account
-    // (which allows us to properly hide controls without CSS hacks, etc)
-    premium: false,
-  },
-
-  // YouTube plugin
-  youtube: {
-    rel: 0, // No related vids
-    showinfo: 0, // Hide info
-    iv_load_policy: 3, // Hide annotations
-    modestbranding: 1, // Hide logos as much as possible (they still show one in the corner when paused)
-    // Custom settings from Plyr
-    customControls: true,
-    noCookie: false, // Whether to use an alternative version of YouTube without cookies
   },
 
   // Media Metadata

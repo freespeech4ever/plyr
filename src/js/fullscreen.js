@@ -258,11 +258,7 @@ class Fullscreen {
 
     // iOS native fullscreen doesn't need the request step
     if (browser.isIos && this.player.config.fullscreen.iosNative) {
-      if (this.player.isVimeo) {
-        this.player.embed.requestFullscreen();
-      } else {
-        this.target.webkitEnterFullscreen();
-      }
+      this.target.webkitEnterFullscreen();
     } else if (!Fullscreen.native || this.forceFallback) {
       this.toggleFallback(true);
     } else if (!this.prefix) {

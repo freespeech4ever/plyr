@@ -148,11 +148,6 @@ declare class Plyr {
    */
   readonly provider: Plyr.Provider;
 
-  /**
-   * Returns the native API for Vimeo or Youtube players
-   */
-  readonly embed?: any;
-
   readonly fullscreen: Plyr.FullscreenControl;
 
   /**
@@ -251,7 +246,7 @@ declare class Plyr {
 
 declare namespace Plyr {
   type MediaType = 'audio' | 'video';
-  type Provider = 'html5' | 'youtube' | 'vimeo';
+  type Provider = 'html5';
   type StandardEventMap = {
     progress: PlyrEvent;
     playing: PlyrEvent;
@@ -288,15 +283,8 @@ declare namespace Plyr {
   };
   // For retrocompatibility, we keep Html5Event
   type Html5Event = keyof Plyr.Html5EventMap;
-  type YoutubeEventMap = {
-    statechange: PlyrStateChangeEvent;
-    qualitychange: PlyrEvent;
-    qualityrequested: PlyrEvent;
-  };
-  // For retrocompatibility, we keep YoutubeEvent
-  type YoutubeEvent = keyof Plyr.YoutubeEventMap;
 
-  type PlyrEventMap = StandardEventMap & Html5EventMap & YoutubeEventMap;
+  type PlyrEventMap = StandardEventMap & Html5EventMap;
 
   interface FullscreenControl {
     /**
@@ -376,11 +364,6 @@ declare namespace Plyr {
      * If the autoplay attribute is present on a <video> or <audio> element, this will be automatically set to true.
      */
     autoplay?: boolean;
-
-    /**
-     * Only allow one player playing at once.
-     */
-    autopause?: boolean;
 
     /**
      * The time, in seconds, to seek when a user hits fast forward or rewind.
@@ -479,12 +462,12 @@ declare namespace Plyr {
     storage?: StorageOptions;
 
     /**
-     * selected: The default speed for playback. options: The speed options to display in the UI. YouTube and Vimeo will ignore any options outside of the 0.5-2 range, so options outside of this range will be hidden automatically.
+     * selected: The default speed for playback. options: The speed options to display in the UI. 
      */
     speed?: SpeedOptions;
 
     /**
-     * Currently only supported by YouTube. default is the default quality level, determined by YouTube. options are the options to display.
+     * Currently unsupported by HTML5.
      */
     quality?: QualityOptions;
 
@@ -498,16 +481,6 @@ declare namespace Plyr {
      * enabled: Whether to enable vi.ai ads. publisherId: Your unique vi.ai publisher ID.
      */
     ads?: AdOptions;
-
-    /**
-     * Vimeo Player Options.
-     */
-    vimeo?: object;
-
-    /**
-     * Youtube Player Options.
-     */
-    youtube?: object;
 
     /**
      * Preview Thumbnails Options.
@@ -611,13 +584,10 @@ declare namespace Plyr {
   }
 
   interface SourceInfo {
-    /**
-     * Note: YouTube and Vimeo are currently not supported as audio sources.
-     */
     type: MediaType;
 
     /**
-     * Title of the new media. Used for the aria-label attribute on the play button, and outer container. YouTube and Vimeo are populated automatically.
+     * Title of the new media. Used for the aria-label attribute on the play button, and outer container. 
      */
     title?: string;
 
@@ -646,7 +616,7 @@ declare namespace Plyr {
 
   interface Source {
     /**
-     * The URL of the media file (or YouTube/Vimeo URL).
+     * The URL of the media file.
      */
     src: string;
     /**
@@ -683,19 +653,9 @@ declare namespace Plyr {
     readonly detail: {readonly plyr: Plyr};
   }
 
-  enum YoutubeState {
-    UNSTARTED = -1,
-    ENDED = 0,
-    PLAYING = 1,
-    PAUSED = 2,
-    BUFFERING = 3,
-    CUED = 5,
-  }
-
   interface PlyrStateChangeEvent extends CustomEvent {
     readonly detail: {
       readonly plyr: Plyr;
-      readonly code: YoutubeState;
     };
   }
 

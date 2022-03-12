@@ -152,7 +152,7 @@ class Plyr {
     this.elements.original = clone;
 
     // Set media type based on tag or data attribute
-    // Supported: video, audio, vimeo, youtube
+    // Supported: video, audio
     const type = this.media.tagName.toLowerCase();
     // Embed properties
     let iframe = null;
@@ -188,14 +188,7 @@ class Plyr {
               this.config.loop.active = true;
             }
 
-            // TODO: replace fullscreen.iosNative with this playsinline config option
-            // YouTube requires the playsinline in the URL
-            if (this.isYouTube) {
-              this.config.playsinline = truthy.includes(url.searchParams.get('playsinline'));
-              this.config.youtube.hl = url.searchParams.get('hl'); // TODO: Should this be setting language?
-            } else {
-              this.config.playsinline = true;
-            }
+            this.config.playsinline = true;
           }
         } else {
           // <div> with attributes
@@ -333,15 +326,7 @@ class Plyr {
   }
 
   get isEmbed() {
-    return this.isYouTube || this.isVimeo;
-  }
-
-  get isYouTube() {
-    return this.provider === providers.youtube;
-  }
-
-  get isVimeo() {
-    return this.provider === providers.vimeo;
+    return false;
   }
 
   get isVideo() {
@@ -490,11 +475,6 @@ class Plyr {
    */
   get buffered() {
     const { buffered } = this.media;
-
-    // YouTube / Vimeo return a float between 0-1
-    if (is.number(buffered)) {
-      return buffered;
-    }
 
     // HTML5
     // TODO: Handle buffered chunks of the media
@@ -692,41 +672,18 @@ class Plyr {
    * Get the minimum allowed speed
    */
   get minimumSpeed() {
-    if (this.isYouTube) {
-      // https://developers.google.com/youtube/iframe_api_reference#setPlaybackRate
-      return Math.min(...this.options.speed);
-    }
-
-    if (this.isVimeo) {
-      // https://github.com/vimeo/player.js/#setplaybackrateplaybackrate-number-promisenumber-rangeerrorerror
-      return 0.5;
-    }
-
-    // https://stackoverflow.com/a/32320020/1191319
-    return 0.0625;
+    return 0.25;
   }
 
   /**
    * Get the maximum allowed speed
    */
   get maximumSpeed() {
-    if (this.isYouTube) {
-      // https://developers.google.com/youtube/iframe_api_reference#setPlaybackRate
-      return Math.max(...this.options.speed);
-    }
-
-    if (this.isVimeo) {
-      // https://github.com/vimeo/player.js/#setplaybackrateplaybackrate-number-promisenumber-rangeerrorerror
-      return 2;
-    }
-
-    // https://stackoverflow.com/a/32320020/1191319
-    return 16;
+    return 2;
   }
 
   /**
    * Set playback quality
-   * Currently HTML5 & YouTube only
    * @param {Number} input - Quality level
    */
   set quality(input) {
@@ -1206,27 +1163,6 @@ class Plyr {
 
       // Clean up
       done();
-    } else if (this.isYouTube) {
-      // Clear timers
-      clearInterval(this.timers.buffering);
-      clearInterval(this.timers.playing);
-
-      // Destroy YouTube API
-      if (this.embed !== null && is.function(this.embed.destroy)) {
-        this.embed.destroy();
-      }
-
-      // Clean up
-      done();
-    } else if (this.isVimeo) {
-      // Destroy Vimeo API
-      // then clean up (wait, to prevent postmessage errors)
-      if (this.embed !== null) {
-        this.embed.unload().then(done);
-      }
-
-      // Vimeo does not always return
-      setTimeout(done, 200);
     }
   };
 
@@ -1239,7 +1175,7 @@ class Plyr {
   /**
    * Check for support
    * @param {String} type - Player type (audio/video)
-   * @param {String} provider - Provider (html5/youtube/vimeo)
+   * @param {String} provider - Provider (html5)
    * @param {Boolean} inline - Where player has `playsinline` sttribute
    */
   static supported(type, provider, inline) {
