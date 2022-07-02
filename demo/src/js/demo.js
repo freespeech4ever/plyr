@@ -20,6 +20,7 @@ import toggleClass from './toggle-class';
       title: 'Test title from config',
       channel: 'Test channel name',
       iconUrl: 'dist/demo.svg',
+      enabled: !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
       keyboard: {
         global: true,
       },
