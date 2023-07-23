@@ -14,10 +14,12 @@
   font-variant-numeric: tabular-nums; // Force monosace-esque number widths
   font-weight: $plyr-font-weight-regular;
   line-height: $plyr-line-height;
-  max-width: 1920px;
-  max-height: 80vh;
-  margin: auto;
-  min-width: 200px;
+  //max-width: 1920px;
+  //max-height: 80vh;
+  //margin: auto;
+  height: 100%;
+  width: 100%;
+  //min-width: 200px;
   position: relative;
   text-shadow: none;
   transition: box-shadow 0.3s ease;

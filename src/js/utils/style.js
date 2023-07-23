@@ -105,7 +105,7 @@ export function setAspectRatio(input) {
     wrapper.style.paddingBottom = `${padding}%`;
   }
 
-  wrapper.classList.add(this.config.classNames.videoFixedRatio);
+//  wrapper.classList.add(this.config.classNames.videoFixedRatio);
 
   return { padding, ratio };
 }

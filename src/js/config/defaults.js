@@ -38,10 +38,10 @@ const defaults = {
 
   // Force an aspect ratio
   // The format must be `'w:h'` (e.g. `'16:9'`)
-  ratio: '16:9',
+  //ratio: '16:9',
 
   // Click video container to play/pause
-  clickToPlay: true,
+  clickToPlay: false,
 
   // Auto hide the controls
   hideControls: true,
@@ -55,13 +55,13 @@ const defaults = {
   // Sprite (for icons)
   loadSprite: true,
   iconPrefix: 'plyr',
-  iconUrl: 'https://tv.gab.com/img/logo/gab-tv.icon.std.svg',
+  iconUrl: '/legacy/green.svg',
 
   // Quality default
   quality: {
-    default: 1080,
+    default: 720,
     // The options to display in the UI, if available for the source media
-    options: [1080, 720, 540, 360, 240],
+    options: [720, 360],
     forced: false,
     onChange: null,
   },
@@ -105,7 +105,7 @@ const defaults = {
   fullscreen: {
     enabled: true, // Allow fullscreen?
     fallback: true, // Fallback using full viewport/window
-    iosNative: false, // Use the native fullscreen in iOS (disables custom controls)
+    iosNative: true, // Use the native fullscreen in iOS (disables custom controls)
     // Selector for the fullscreen container so contextual / non-player content can remain visible in fullscreen mode
     // Non-ancestors of the player element will be ignored
     // container: null, // defaults to the player element
